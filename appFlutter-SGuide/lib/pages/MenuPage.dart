@@ -1,3 +1,4 @@
+import 'package:appsguide/widgets/NavigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,19 +20,25 @@ class _MenuPageState extends State<MenuPage> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => LoginPage()));
               },
               icon: Icon(Icons.logout)),
         ],
-        title: Text('Menu SGuide',style: GoogleFonts.raleway(fontSize: 20, fontStyle: FontStyle.italic,color: Colors.white, fontWeight: FontWeight.bold)),
+        title: Text('¡Bienvenido [nombre]',
+            style: GoogleFonts.raleway(
+                fontSize: 20,
+                fontStyle: FontStyle.italic,
+                color: Colors.white,
+                fontWeight: FontWeight.bold)),
         backgroundColor: GlobalColors.colorGrey,
-
       ),
       body: Container(
         child: Text("HOLA MUNDO"),
       ),
+      drawer: NavigationDrawer(),
     );
   }
 }
