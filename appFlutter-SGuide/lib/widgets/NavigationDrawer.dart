@@ -16,7 +16,7 @@ class _NavigationDrawer extends State<NavigationDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: GlobalColors.colorGrey,
+      backgroundColor: GlobalColors.blackBackgroundNavigation,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [

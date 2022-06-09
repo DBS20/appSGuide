@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-class GlobalColors{
+
+class GlobalColors {
   //Colores
   static const Color colorWhite = const Color(0xffF5F5F5);
   static const Color colorWhiteCream = const Color(0xffE8E8E8);
@@ -12,7 +13,14 @@ class GlobalColors{
   static const Color colorBlueCapri = const Color(0xff19C7DF);
   static const Color colorGreenTurquoise = const Color(0x6a19DFCD);
   static const Color colorGreenLight = const Color(0x6a26F298);
-  static const Color colorGreenEmerald= const Color(0xff189392);
-  static const Color colorBrown= const Color(0xff866a6a);
+  static const Color colorGreenEmerald = const Color(0xff189392);
+  static const Color colorBrown = const Color(0xff866a6a);
   static const Color colorBeigeBackground = const Color(0xfff6eae0);
+
+  static const Color blackBackgroundNavigation =
+      const Color.fromARGB(125, 0, 0, 0);
+
+  static const Color cakeBlue = const Color.fromARGB(255, 199, 208, 216);
+
+  static const Color blockBlue = Color.fromARGB(255, 186, 210, 237);
 }
