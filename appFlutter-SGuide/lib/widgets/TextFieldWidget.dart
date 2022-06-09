@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:appsguide/shared/responsive.dart';
 import 'package:appsguide/utilerias/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TextFieldWidget extends StatelessWidget {
   final String? hintText;
@@ -33,7 +34,7 @@ class TextFieldWidget extends StatelessWidget {
     this.onTap,
     this.readOnly = false,
     this.otherColor = false,
-    this.color = GlobalColors.colorGrey,
+    this.color = GlobalColors.colorGreenEmerald,
     this.maxlong = 50,
     this.isMaxlong = false,
     this.isfilled = false,
@@ -61,9 +62,9 @@ class TextFieldWidget extends StatelessWidget {
       readOnly: readOnly!,
       obscureText: obscureText!,
       cursorColor: color,
-      style: TextStyle(color: color, fontSize: fontSizeTextField),
+      style: GoogleFonts.nunito(fontSize: 20,color: Colors.white),
       decoration: InputDecoration(
-          labelStyle: TextStyle(color: color),
+          labelStyle: GoogleFonts.nunito(fontSize: 12, color: GlobalColors.colorGreenEmerald),
           focusColor: color,
           filled: isfilled,
           enabledBorder: OutlineInputBorder(

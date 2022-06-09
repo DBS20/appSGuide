@@ -8,6 +8,7 @@ class ButtonWidget extends StatelessWidget {
   //const ButtonWidget({Key? key}) : super(key: key);
 
   final String? tittle;
+  final Gradient gradient;
   final bool? hasColor;
   final void Function()? onPressed;
   final Color? color;
@@ -20,6 +21,7 @@ class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
     Key? key,
     this.tittle,
+    required this.gradient,
     this.hasColor,
     this.onPressed,
     this.color,
@@ -46,6 +48,7 @@ class ButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: hasColor! ? GlobalColors.colorWhite : otherColor! ? colorButton : GlobalColors.colorGrey,
           borderRadius: BorderRadius.circular(4.0),
+          gradient: gradient,
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(4.0),
@@ -56,7 +59,7 @@ class ButtonWidget extends StatelessWidget {
             child: Center(
               child: Text(
                 tittle!,
-                style: GoogleFonts.nunito(fontSize: 20,color: GlobalColors.colorGreenEmerald),
+                style: GoogleFonts.nunito(fontSize: 20,color: GlobalColors.colorGrey,fontWeight: FontWeight.bold),
               ),
             ),
           ),
