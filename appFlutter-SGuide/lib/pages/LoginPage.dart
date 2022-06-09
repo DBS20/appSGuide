@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:appsguide/pages/MenuPage.dart';
 import 'package:appsguide/utilerias/colors.dart';
+import 'package:appsguide/widgets/TextFieldWidget.dart';
+import 'package:appsguide/widgets/ButtonWidget.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -19,9 +23,50 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: GlobalColors.colorGrey,
       ),
       body: Container(
-        child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("HOLA MUNDO")
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFieldWidget(
+                  isPrefixIcon: true,
+                  prefixIconData: Icons.person,
+                  isSuffixIcon: false,
+                  isMyControllerActivate: true,
+                  //controller: _controllerUser,
+                  hintText: 'Username...',
+                  onChange: (String value) => {value}
+
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFieldWidget(
+                  isPrefixIcon: true,
+                  prefixIconData: Icons.person,
+                  isSuffixIcon: false,
+                  isMyControllerActivate: true,
+                  //controller: _controllerUser,
+                  hintText: 'Password...',
+                  onChange: (String value) => {value}
+
+              ),
+            ),
+            Padding(
+                padding: const EdgeInsets.all(10.0),
+              child: ButtonWidget(
+                tittle: 'Sign in',
+                width: 200.0,
+                height: 40.0,
+                hasColor: false,
+                onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => MenuPage()));
+                  },
+              ),
+            ),
           ],
         ),
       ),
