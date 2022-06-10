@@ -6,6 +6,9 @@ import 'package:appsguide/pages/LoginPage.dart';
 import 'package:appsguide/widgets/TextFieldWidget.dart';
 import 'package:appsguide/widgets/ButtonWidget.dart';
 
+
+import 'package:page_transition/page_transition.dart';
+
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
 
@@ -22,8 +25,10 @@ class _MenuPageState extends State<MenuPage> {
           IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => LoginPage()));
+                Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginPage()));
+                //Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: LoginPage()));
+                //Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTopJoined, child: LoginPage(),childCurrent: MenuPage()));
+                //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
               },
               icon: Icon(Icons.logout)),
         ],
