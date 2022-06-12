@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:appsguide/pages/MenuPage.dart';
 import 'package:appsguide/utilerias/colors.dart';
@@ -7,15 +9,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:appsguide/shared/responsive.dart';
 import 'package:page_transition/page_transition.dart';
 
-
+String? name;
+String? id;
+String? email;
+String? pss;
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+   LoginPage({Key? key}) : super(key: key);
 
   @override
   State<LoginPage> createState() => _LoginPageState();
+
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  final TextEditingController _controllerUser = TextEditingController();
   @override
   Widget build(BuildContext context) {
 
@@ -68,8 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                 prefixIconData: Icons.person,
                 isSuffixIcon: false,
                 isMyControllerActivate: true,
-                //controller: _controllerUser,
-                hintText: 'Username...',
+                controller: _controllerUser,
+                hintText: 'Matricula...',
                 onChange: (String value) => {value}
 
             ),
@@ -82,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 isSuffixIcon: false,
                 isMyControllerActivate: true,
                 //controller: _controllerUser,
-                hintText: 'Password...',
+                hintText: 'Contraseña...',
                 onChange: (String value) => {value}
 
             ),
@@ -101,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 100, 0),
-                          child: Text("Forgot Password?",style: GoogleFonts.nunito(fontSize: 12,color: GlobalColors.colorBlueCapri,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+                          child: Text("¿Olvidó contraseña?",style: GoogleFonts.nunito(fontSize: 12,color: GlobalColors.colorBlueCapri,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
                       ),
                     ],
                   ),
@@ -111,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Text("Register",style: GoogleFonts.nunito(fontSize: 12,color: GlobalColors.colorBlueCapri,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+                        child: Text("Registro",style: GoogleFonts.nunito(fontSize: 12,color: GlobalColors.colorBlueCapri,fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
                       ),
                     ],
                   ),
@@ -125,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: ButtonWidget(
-              tittle: 'LOGIN',
+              tittle: 'Acceder',
               width: 200.0,
               height: 50.0,
               hasColor: false,
@@ -133,6 +141,19 @@ class _LoginPageState extends State<LoginPage> {
                 colors: <Color>[GlobalColors.colorBlue,GlobalColors.colorGreenEmerald, GlobalColors.colorGreenTurquoise],
               ),
               onPressed: () {
+
+                //captura de datos
+                id = _controllerUser.text;
+                if(_controllerUser.text.isEmpty){
+                  id = "70624";
+                  int.parse(id!);
+                }else{
+                  int.parse(id!);
+                }
+
+                //condición de que existe el usuario
+
+                //cambiamos vista
                 Navigator.of(context).pop();
                 Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: MenuPage()));
                 //Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftJoined, child: MenuPage(), childCurrent: LoginPage()));

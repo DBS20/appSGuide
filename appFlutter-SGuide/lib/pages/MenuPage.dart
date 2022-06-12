@@ -10,10 +10,13 @@ import 'package:appsguide/widgets/ButtonWidget.dart';
 import 'package:page_transition/page_transition.dart';
 
 class MenuPage extends StatefulWidget {
-  const MenuPage({Key? key}) : super(key: key);
+   MenuPage({Key? key}) : super(key: key);
+
+
 
   @override
   State<MenuPage> createState() => _MenuPageState();
+
 }
 
 class _MenuPageState extends State<MenuPage> {
@@ -32,7 +35,7 @@ class _MenuPageState extends State<MenuPage> {
               },
               icon: Icon(Icons.logout)),
         ],
-        title: Text('¡Bienvenido [nombre]!',
+        title: Text('¡Bienvenido: '+ id!,
             style: GoogleFonts.raleway(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
