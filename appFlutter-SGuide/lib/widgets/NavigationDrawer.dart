@@ -5,6 +5,8 @@ import 'package:appsguide/pages/LoginPage.dart';
 import 'package:appsguide/widgets/TextFieldWidget.dart';
 import 'package:appsguide/widgets/ButtonWidget.dart';
 
+import 'package:appsguide/pages/ProfilePage.dart';
+
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
@@ -69,8 +71,8 @@ class _NavigationDrawer extends State<NavigationDrawer> {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                /*Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => EurUsdPage()));*/
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => ProfilePage()));
               },
             ),
           ),
