@@ -1,3 +1,4 @@
+import 'package:accordion/accordion.dart';
 import 'package:appsguide/widgets/NavigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
@@ -6,17 +7,13 @@ import 'package:appsguide/pages/LoginPage.dart';
 import 'package:appsguide/widgets/TextFieldWidget.dart';
 import 'package:appsguide/widgets/ButtonWidget.dart';
 
-
 import 'package:page_transition/page_transition.dart';
 
 class MenuPage extends StatefulWidget {
-   MenuPage({Key? key}) : super(key: key);
-
-
+  MenuPage({Key? key}) : super(key: key);
 
   @override
   State<MenuPage> createState() => _MenuPageState();
-
 }
 
 class _MenuPageState extends State<MenuPage> {
@@ -28,14 +25,17 @@ class _MenuPageState extends State<MenuPage> {
           IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(context, PageTransition(type: PageTransitionType.fade, child: LoginPage()));
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade, child: LoginPage()));
                 //Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: LoginPage()));
                 //Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTopJoined, child: LoginPage(),childCurrent: MenuPage()));
                 //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => LoginPage()));
               },
               icon: Icon(Icons.logout)),
         ],
-        title: Text('¡Bienvenido: '+ id!,
+        title: Text('¡Bienvenido: ' + id!,
             style: GoogleFonts.raleway(
                 fontSize: 20,
                 fontStyle: FontStyle.italic,
@@ -94,109 +94,181 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
             Center(
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: GlobalColors.cakeBlue,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: 250,
-                width: 400,
-                margin: const EdgeInsets.only(top: 30.0, bottom: 20.0),
-              ),
-            ),
-            Center(
-              child: Container(
-                  decoration: const BoxDecoration(
-                      color: GlobalColors.blockBlue,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  height: 100,
-                  width: 450,
-                  margin: const EdgeInsets.only(top: 30.0, bottom: 20.0),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Column(children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text("A",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20)),
-                        ),
+                child: Accordion(
+              maxOpenSections: 2,
+              children: [
+                AccordionSection(
+                  headerBackgroundColor: GlobalColors.colorLightGrey,
+                  headerBackgroundColorOpened: GlobalColors.colorGrey,
+                  isOpen: false,
+                  header: Text(
+                    'Rectoría',
+                    style: TextStyle(
+                        color: GlobalColors.colorGreenEmerald,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  content: Column(children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                            "En la entrada principal de la calle Universidad",
+                            style: TextStyle(fontSize: 20)),
                       ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0),
-                            child: Align(
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0, left: 10.0),
+                          child: Align(
                               alignment: Alignment.centerLeft,
-                              child: Text("Anfiteatro",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 20)),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 250.0, top: 20.0),
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Text("Detalle",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 20)),
-                            ),
-                          )
-                        ],
-                      )
-                    ]),
-                  )),
-            ),
-            Center(
-              child: Container(
-                  decoration: const BoxDecoration(
-                      color: GlobalColors.blockBlue,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  height: 100,
-                  width: 450,
-                  margin: const EdgeInsets.only(top: 30.0, bottom: 20.0),
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 20.0),
-                    child: Column(children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 10.0),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text("B",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20)),
+                              child: ButtonWidget(
+                                tittle: "Ruta",
+                                color: GlobalColors.colorWhite,
+                                height: 40.0,
+                                width: 80.0,
+                                hasColor: false,
+                                colorButton: GlobalColors.colorBlack,
+                                fontSize: 10.0,
+                                onPressed: () {},
+                              )),
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 20.0),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text("Anfiteatro",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 20)),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 250.0, top: 20.0),
-                            child: Align(
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0, left: 280.0),
+                          child: Align(
                               alignment: Alignment.centerRight,
-                              child: Text("Detalle",
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 20)),
-                            ),
-                          )
-                        ],
-                      )
-                    ]),
-                  )),
-            ),
+                              child: ButtonWidget(
+                                tittle: "360°",
+                                color: GlobalColors.colorWhite,
+                                height: 40.0,
+                                width: 80.0,
+                                hasColor: false,
+                                colorButton: GlobalColors.colorBlack,
+                                fontSize: 10.0,
+                                onPressed: () {},
+                              )),
+                        ),
+                      ],
+                    )
+                  ]),
+                ),
+                AccordionSection(
+                  headerBackgroundColor: GlobalColors.colorLightGrey,
+                  headerBackgroundColorOpened: GlobalColors.colorGrey,
+                  isOpen: false,
+                  header: Text(
+                    'SAI',
+                    style: TextStyle(
+                        color: GlobalColors.colorGreenEmerald,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  content: Column(children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text("Enfermería al lado mantenimiento",
+                            style: TextStyle(fontSize: 20)),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0, left: 10.0),
+                          child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: ButtonWidget(
+                                tittle: "Ruta",
+                                color: GlobalColors.colorWhite,
+                                height: 40.0,
+                                width: 80.0,
+                                hasColor: false,
+                                colorButton: GlobalColors.colorBlack,
+                                fontSize: 10.0,
+                                onPressed: () {},
+                              )),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0, left: 280.0),
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: ButtonWidget(
+                                tittle: "360°",
+                                color: GlobalColors.colorWhite,
+                                height: 40.0,
+                                width: 80.0,
+                                hasColor: false,
+                                colorButton: GlobalColors.colorBlack,
+                                fontSize: 10.0,
+                                onPressed: () {},
+                              )),
+                        ),
+                      ],
+                    )
+                  ]),
+                ),
+                AccordionSection(
+                  headerBackgroundColor: GlobalColors.colorLightGrey,
+                  headerBackgroundColorOpened: GlobalColors.colorGrey,
+                  isOpen: false,
+                  header: Text(
+                    'Cristales',
+                    style: TextStyle(
+                        color: GlobalColors.colorGreenEmerald,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  content: Column(children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                            "Quien fuera servilleta para tocar esos labios",
+                            style: TextStyle(fontSize: 20)),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0, left: 10.0),
+                          child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: ButtonWidget(
+                                tittle: "Ruta",
+                                color: GlobalColors.colorWhite,
+                                height: 40.0,
+                                width: 80.0,
+                                hasColor: false,
+                                colorButton: GlobalColors.colorBlack,
+                                fontSize: 10.0,
+                                onPressed: () {},
+                              )),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 20.0, left: 280.0),
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: ButtonWidget(
+                                tittle: "360°",
+                                color: GlobalColors.colorWhite,
+                                height: 40.0,
+                                width: 80.0,
+                                hasColor: false,
+                                colorButton: GlobalColors.colorBlack,
+                                fontSize: 10.0,
+                                onPressed: () {},
+                              )),
+                        ),
+                      ],
+                    )
+                  ]),
+                ),
+              ],
+            )),
           ]),
         ],
       )),
