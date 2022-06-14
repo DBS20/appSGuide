@@ -95,10 +95,11 @@ class _MenuPageState extends State<MenuPage> {
                   isOpen: false,
                   header: Text(
                     'Rectoría',
-                    style: TextStyle(
-                        color: GlobalColors.colorGreenEmerald,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: GoogleFonts.montserrat(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: GlobalColors.colorGreenEmerald,
+                    ),
                   ),
                   content: Column(children: [
                     Padding(
@@ -107,7 +108,10 @@ class _MenuPageState extends State<MenuPage> {
                         alignment: Alignment.center,
                         child: Text(
                             "En la entrada principal de la calle Universidad",
-                            style: TextStyle(fontSize: 20)),
+                            style: GoogleFonts.nunito(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic)),
                       ),
                     ),
                     Row(
