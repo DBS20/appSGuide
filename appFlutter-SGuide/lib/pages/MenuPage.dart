@@ -51,15 +51,7 @@ class _MenuPageState extends State<MenuPage> {
           Container(
             height: 1100,
             width: 700,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/CoverSalle.jpg"),
-                colorFilter: ColorFilter.mode(
-                    Color.fromRGBO(0, 0, 0, 0.682), BlendMode.darken),
-                fit: BoxFit.fitHeight,
-                opacity: 0.6,
-              ),
-            ),
+            color: GlobalColors.colorDarkGrey,
           ),
           Column(children: [
             Center(
@@ -77,7 +69,7 @@ class _MenuPageState extends State<MenuPage> {
                                     builder: (BuildContext context) =>
                                         BullishPatterns()));
                           },*/
-                        child: Image.asset("assets/images/schoolguideLogo.png",
+                        child: Image.asset("assets/images/CoverSalle.jpg",
                             height: 200, width: 400, fit: BoxFit.fill),
                       ))),
             ),
