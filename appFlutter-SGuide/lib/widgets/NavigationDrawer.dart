@@ -1,3 +1,4 @@
+import 'package:appsguide/pages/MenuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -49,8 +50,8 @@ class _NavigationDrawer extends State<NavigationDrawer> {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                /*Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => FirstPage()));*/
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MenuPage()));
               },
             ),
           ),

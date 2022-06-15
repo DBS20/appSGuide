@@ -1,4 +1,5 @@
 import 'package:accordion/accordion.dart';
+import 'package:appsguide/pages/MapPage.dart';
 import 'package:appsguide/widgets/NavigationDrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
@@ -128,7 +129,15 @@ class _MenuPageState extends State<MenuPage> {
                                 hasColor: false,
                                 colorButton: GlobalColors.colorBlack,
                                 fontSize: 10.0,
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType
+                                              .rightToLeftWithFade,
+                                          child: MapPage()));
+                                },
                               )),
                         ),
                         Padding(
