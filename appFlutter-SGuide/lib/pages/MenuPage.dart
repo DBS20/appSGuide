@@ -37,12 +37,9 @@ class _MenuPageState extends State<MenuPage> {
               },
               icon: Icon(Icons.logout)),
         ],
-        title: Text('¡Bienvenido: ' + id!,
-            style: GoogleFonts.raleway(
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
-                color: Colors.white,
-                fontWeight: FontWeight.bold)),
+        title: Text('Bienvenido: ' + id!,
+            style: GoogleFonts.comfortaa(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold)),
+
         backgroundColor: GlobalColors.colorGrey,
         shadowColor: GlobalColors.colorGreenLight,
         elevation: 20,
@@ -50,12 +47,16 @@ class _MenuPageState extends State<MenuPage> {
       body: Container(
         color:  GlobalColors.colorDarkGrey,
         height: 4000,
+
         child:SingleChildScrollView(
           scrollDirection: Axis.vertical,
+
           child: Stack(
             children: [
+
               Column(
                 children: [
+
                   Container(
                     margin: EdgeInsets.all(8),
                     child: ClipRRect(
@@ -79,7 +80,7 @@ class _MenuPageState extends State<MenuPage> {
                           child: ListTile(
                             //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
                             title: Text('Rutas:', style: GoogleFonts.nunito(fontSize: 18,color: GlobalColors.colorLightGrey,fontWeight: FontWeight.bold)),
-                            subtitle: Text('Busca tu ruta más cercana para llegar al lugar que deseas', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorLightGrey)),
+                            subtitle: Text('Busca tu ruta más cercana para llegar al lugar que deseas', style: GoogleFonts.nunitoSans(fontSize: 15,color: GlobalColors.colorLightGrey)),
                             leading: Icon(Icons.map_outlined, size: 50,color: GlobalColors.colorLightGrey),
                           ),
                         ),
@@ -121,10 +122,7 @@ class _MenuPageState extends State<MenuPage> {
                             isOpen: false,
                             header: Text(
                               'Rectoría',
-                              style: GoogleFonts.montserrat(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: GlobalColors.colorGreenEmerald,
+                              style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.bold, color: GlobalColors.colorGreenEmerald,
                               ),
                             ),
                             content: Column(children: [
@@ -134,10 +132,7 @@ class _MenuPageState extends State<MenuPage> {
                                   alignment: Alignment.center,
                                   child: Text(
                                       "En la entrada principal de la calle Universidad",
-                                      style: GoogleFonts.nunito(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.italic)),
+                                      style: GoogleFonts.nunitoSans(fontSize: 20, fontWeight: FontWeight.bold)),
                                 ),
                               ),
                               Row(

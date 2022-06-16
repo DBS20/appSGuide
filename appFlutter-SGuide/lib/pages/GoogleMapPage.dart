@@ -33,12 +33,9 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
               },
               icon: Icon(Icons.close)),
         ],
-        title: Text('Rutas',
-            style: GoogleFonts.raleway(
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
-                color: Colors.white,
-                fontWeight: FontWeight.bold)),
+        title: Text('Mapa 360°',
+            style: GoogleFonts.comfortaa(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold)),
+
         backgroundColor: GlobalColors.colorGrey,
         shadowColor: GlobalColors.colorGreenLight,
         elevation: 20,

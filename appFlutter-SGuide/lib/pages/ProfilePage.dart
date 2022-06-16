@@ -18,11 +18,8 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Perfil',
-            style: GoogleFonts.nunito(
-                fontSize: 20,
-                fontStyle: FontStyle.italic,
-                color: GlobalColors.colorWhite,
-                fontWeight: FontWeight.bold)),
+            style: GoogleFonts.comfortaa(fontSize: 20,color: GlobalColors.colorWhite, fontWeight: FontWeight.bold)),
+
         backgroundColor: GlobalColors.colorGrey,
         shadowColor: GlobalColors.colorGreenLight,
         elevation: 20,

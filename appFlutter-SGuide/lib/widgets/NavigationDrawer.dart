@@ -27,12 +27,12 @@ class _NavigationDrawer extends State<NavigationDrawer> {
             decoration: BoxDecoration(
               color: GlobalColors.colorBlack,
             ),
-            accountName: Text('Alan Guzmán'),
-            accountEmail: Text('af189107@gmail.com'),
+            accountName: Text('Alan Guzmán', style: GoogleFonts.comfortaa(fontSize: 14,color: GlobalColors.colorWhite,fontWeight: FontWeight.bold)),
+            accountEmail: Text('af189107@gmail.com',style: GoogleFonts.comfortaa(fontSize: 12,color: GlobalColors.colorWhite)),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Color.alphaBlend(Colors.black, Colors.black),
               backgroundImage:
-                  ExactAssetImage("assets/images/schoolguideLogo.png"),
+                  ExactAssetImage("assets/images/profile.png"),
             ),
           ),
           Ink(
@@ -42,12 +42,7 @@ class _NavigationDrawer extends State<NavigationDrawer> {
                 Icons.home,
                 color: GlobalColors.colorGreenEmerald,
               ),
-              title: Text(
-                'Inicio',
-                style: TextStyle(
-                  color: GlobalColors.colorBlueCapri,
-                ),
-              ),
+              title: Text('Inicio', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorBlueCapri, fontWeight: FontWeight.bold)),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(
@@ -55,10 +50,12 @@ class _NavigationDrawer extends State<NavigationDrawer> {
               },
             ),
           ),
+
           Divider(
             thickness: 0.5,
             color: GlobalColors.colorGreenLight,
           ),
+
           Ink(
             color: Color.fromARGB(64, 0, 0, 0),
             child: ListTile(
@@ -66,10 +63,7 @@ class _NavigationDrawer extends State<NavigationDrawer> {
                 Icons.person,
                 color: GlobalColors.colorGreenEmerald,
               ),
-              title: Text(
-                'Datos de cuenta',
-                style: TextStyle(color: GlobalColors.colorBlueCapri),
-              ),
+              title: Text('Datos de Cuenta', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorBlueCapri, fontWeight: FontWeight.bold)),
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(
@@ -77,10 +71,12 @@ class _NavigationDrawer extends State<NavigationDrawer> {
               },
             ),
           ),
+
           Divider(
             thickness: 0.5,
             color: GlobalColors.colorGreenLight,
           ),
+
           Ink(
             color: Color.fromARGB(64, 0, 0, 0),
             child: ListTile(
@@ -88,10 +84,7 @@ class _NavigationDrawer extends State<NavigationDrawer> {
                 Icons.question_answer,
                 color: GlobalColors.colorGreenEmerald,
               ),
-              title: Text(
-                'Ayuda',
-                style: TextStyle(color: GlobalColors.colorBlueCapri),
-              ),
+              title: Text('Ayuda', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorBlueCapri,fontWeight: FontWeight.bold)),
               onTap: () {
                 Navigator.of(context).pop();
                 /*Navigator.of(context).push(MaterialPageRoute(
@@ -99,10 +92,12 @@ class _NavigationDrawer extends State<NavigationDrawer> {
               },
             ),
           ),
+
           Divider(
             thickness: 0.5,
             color: GlobalColors.colorGreenLight,
           ),
+
           Ink(
             color: Color.fromARGB(64, 0, 0, 0),
             child: ListTile(
@@ -110,14 +105,9 @@ class _NavigationDrawer extends State<NavigationDrawer> {
                 Icons.close,
                 color: GlobalColors.colorGreenEmerald,
               ),
-              title: Text(
-                'Cerrar',
-                style: TextStyle(color: GlobalColors.colorBlueCapri),
-              ),
+              title: Text('Cerrar', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorBlueCapri, fontWeight: FontWeight.bold)),
               onTap: () {
                 Navigator.of(context).pop();
-                /*Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => XagUsdPage()));*/
               },
             ),
           ),

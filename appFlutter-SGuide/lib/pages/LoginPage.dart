@@ -1,17 +1,18 @@
-
 import 'package:flutter/material.dart';
+
 import 'package:appsguide/pages/MenuPage.dart';
+
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:appsguide/widgets/TextFieldWidget.dart';
 import 'package:appsguide/widgets/ButtonWidgetGradient.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:appsguide/shared/responsive.dart';
 import 'package:page_transition/page_transition.dart';
 
 String? name;
 String? id;
 String? email;
 String? pss;
+
 class LoginPage extends StatefulWidget {
    LoginPage({Key? key}) : super(key: key);
 
@@ -25,40 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _controllerUser = TextEditingController();
   @override
   Widget build(BuildContext context) {
-
-    double leftText =0;
-    double topText = 0;
-    double rightText = 0;
-    double bottomText = 0;
-
-    double leftText2 = 0;
-    double topText2 = 0;
-    double rightText2 = 0;
-    double bottomText2 = 0;
-
-    if(isTab(context) || isDesktop(context)){
-      leftText = 20;
-      topText = 1;
-      rightText = 520;
-      bottomText = 1;
-
-      leftText2 = 520;
-      topText2 = 1;
-      rightText2 = 20;
-      bottomText2 = 1;
-
-
-    }else if(isMobile(context)){
-      leftText = 20;
-      topText = 1;
-      rightText = 140;
-      bottomText = 1;
-
-      leftText2 = 140;
-      topText2 = 1;
-      rightText2 = 20;
-      bottomText2 = 1;
-    }
 
     return Scaffold(
       body: Container(
