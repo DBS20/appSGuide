@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:appsguide/pages/LoginPage.dart';
 import 'package:appsguide/pages/MenuPage.dart';
 
 import 'package:page_transition/page_transition.dart';
@@ -94,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: ListTile(
                               //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
                               title: Text('Matricula:', style: GoogleFonts.nunito(fontSize: 18,color: GlobalColors.colorGreenTurquoise,fontWeight: FontWeight.bold)),
-                              subtitle: Text('70624', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorGreenTurquoise)),
+                              subtitle: Text(id!, style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorGreenTurquoise)),
                               leading: Icon(Icons.apps_sharp, size: 50,color: GlobalColors.colorGreenTurquoise),
                             ),
                           ),
