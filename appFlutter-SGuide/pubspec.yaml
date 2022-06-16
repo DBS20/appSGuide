@@ -44,6 +44,7 @@ dependencies:
   google_maps_flutter: ^2.1.8
   flutter_google_street_view: ^2.2.7
   google_maps_flutter_web: ^0.4.0
+  video_player: ^2.4.4
 
 
 dev_dependencies:
@@ -69,6 +70,7 @@ flutter:
   uses-material-design: true
   assets: 
     - assets/images/
+    - assets/video/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

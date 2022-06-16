@@ -2,11 +2,9 @@ import 'package:appsguide/pages/MenuPage.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:appsguide/pages/LoginPage.dart';
-import 'package:appsguide/widgets/TextFieldWidget.dart';
-import 'package:appsguide/widgets/ButtonWidget.dart';
 
 import 'package:appsguide/pages/ProfilePage.dart';
+import 'package:appsguide/pages/HelpPage.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -87,8 +85,8 @@ class _NavigationDrawer extends State<NavigationDrawer> {
               title: Text('Ayuda', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorBlueCapri,fontWeight: FontWeight.bold)),
               onTap: () {
                 Navigator.of(context).pop();
-                /*Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => XauUsdPage()));*/
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => HelpPage()));
               },
             ),
           ),
