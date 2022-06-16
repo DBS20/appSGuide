@@ -1,4 +1,4 @@
-import 'package:appsguide/pages/RegisterPage.dart';
+import 'package:appsguide/pages/LoginPage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:appsguide/pages/MenuPage.dart';
@@ -14,18 +14,34 @@ String? id;
 String? email;
 String? pss;
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _controllerUser = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    PageTransition(
+                        type: PageTransitionType.fade, child: LoginPage()));
+              },
+              icon: Icon(Icons.close)),
+        ],
+        backgroundColor: GlobalColors.colorDarkGrey,
+        shadowColor: GlobalColors.colorGreenLight,
+        elevation: 20,
+      ),
       body: Container(
         color: GlobalColors.colorDarkGrey,
         child: Column(
@@ -45,80 +61,37 @@ class _LoginPageState extends State<LoginPage> {
                   isSuffixIcon: false,
                   isMyControllerActivate: true,
                   controller: _controllerUser,
-                  hintText: 'Matricula...',
+                  hintText: 'Nombre completo',
                   onChange: (String value) => {value}),
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: TextFieldWidget(
                   isPrefixIcon: true,
+                  //Cambiar a ícono de números
                   prefixIconData: Icons.person,
                   isSuffixIcon: false,
                   isMyControllerActivate: true,
                   //controller: _controllerUser,
-                  hintText: 'Contraseña...',
+                  hintText: 'Matrícula',
                   onChange: (String value) => {value}),
             ),
             Padding(
-              padding: const EdgeInsets.all(0.3),
-              child: Container(
-                width: 300,
-                height: 50,
-                alignment: Alignment.center,
-                child: Row(
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(10, 0, 100, 0),
-                          child: Text(
-                            "¿Olvidó contraseña?",
-                            style: GoogleFonts.nunito(
-                                fontSize: 12,
-                                color: GlobalColors.colorBlueCapri,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                          child: new GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                              Navigator.push(
-                                  context,
-                                  PageTransition(
-                                      type: PageTransitionType.rightToLeft,
-                                      child: RegisterPage()));
-                            },
-                            child: new Text(
-                              "Registro",
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  color: GlobalColors.colorBlueCapri,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              padding: const EdgeInsets.all(15.0),
+              child: TextFieldWidget(
+                  isPrefixIcon: true,
+                  //Cambiar a ícono de Llave
+                  prefixIconData: Icons.person,
+                  isSuffixIcon: false,
+                  isMyControllerActivate: true,
+                  controller: _controllerUser,
+                  hintText: 'Contraseña',
+                  onChange: (String value) => {value}),
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: ButtonWidget(
-                tittle: 'Acceder',
+                tittle: 'Guardar',
                 width: 200.0,
                 height: 50.0,
                 hasColor: false,
