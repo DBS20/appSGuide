@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:appsguide/pages/MenuPage.dart';
@@ -68,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.network("lib/logo/sglogo.png", width: 600,height: 200,),
+          Image.asset("assets/images/sglogo.png", width: 600,height: 200,),
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextFieldWidget(

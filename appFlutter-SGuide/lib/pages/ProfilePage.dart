@@ -33,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             children: [
 
-             Image.network("lib/logo/profileWallpaper.jpg"),
+             Image.asset("assets/images/profileWallpaper.jpg"),
 
               Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -107,7 +107,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
-
 
             ],
           ),
