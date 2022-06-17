@@ -1,4 +1,6 @@
+import 'package:appsguide/my_icons_icons.dart';
 import 'package:appsguide/pages/RegisterPage.dart';
+import 'package:appsguide/widgets/NumberFieldWidget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:appsguide/pages/MenuPage.dart';
@@ -6,6 +8,7 @@ import 'package:appsguide/pages/MenuPage.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:appsguide/widgets/TextFieldWidget.dart';
 import 'package:appsguide/widgets/ButtonWidgetGradient.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -39,24 +42,25 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: TextFieldWidget(
+              child: NumberFieldWidget(
                   isPrefixIcon: true,
                   prefixIconData: Icons.person,
                   isSuffixIcon: false,
                   isMyControllerActivate: true,
                   controller: _controllerUser,
-                  hintText: 'Matricula...',
+                  hintText: 'Matricula',
                   onChange: (String value) => {value}),
             ),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: TextFieldWidget(
+                  obscureText: true,
                   isPrefixIcon: true,
-                  prefixIconData: Icons.person,
+                  prefixIconData: My_icons.key,
                   isSuffixIcon: false,
                   isMyControllerActivate: true,
                   //controller: _controllerUser,
-                  hintText: 'Contraseña...',
+                  hintText: 'Contraseña',
                   onChange: (String value) => {value}),
             ),
             Padding(

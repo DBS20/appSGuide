@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:appsguide/shared/responsive.dart';
 import 'package:appsguide/utilerias/colors.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -54,41 +55,46 @@ class TextFieldWidget extends StatelessWidget {
     }
 
     return TextFormField(
-      maxLength: isMaxlong == false ? null : maxlong,
-      controller: isMyControllerActivate == false ? null : controller,
-      textInputAction: TextInputAction.done,
-      onChanged: onChange,
-      onTap: onTap,
-      readOnly: readOnly!,
-      obscureText: obscureText!,
-      cursorColor: color,
-      style: GoogleFonts.nunito(fontSize: 20,color: Colors.white),
-      decoration: InputDecoration(
-          labelStyle: GoogleFonts.nunito(fontSize: 12, color: GlobalColors.colorGreenEmerald),
-          focusColor: color,
-          filled: isfilled,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.0),
-            borderSide: BorderSide(color: color!),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4.0),
-            borderSide: BorderSide(color: color!),
-          ),
-          labelText: hintText,
-          prefixIcon: isPrefixIcon == false
-              ? null
-              : Icon(prefixIconData, size: 30, color: color),
-          suffixIcon: isSuffixIcon == false
-              ? null
-              : GestureDetector(
-            onTap: onsuffixIconTap,
-            child: Icon(
-              sufixtIconData,
-              size: 25,
-              color: color,
+        maxLength: isMaxlong == false ? null : maxlong,
+        controller: isMyControllerActivate == false ? null : controller,
+        textInputAction: TextInputAction.done,
+        onChanged: onChange,
+        onTap: onTap,
+        readOnly: readOnly!,
+        obscureText: obscureText!,
+        cursorColor: color,
+        style: GoogleFonts.nunito(fontSize: 20, color: Colors.white),
+        decoration: InputDecoration(
+            labelStyle: GoogleFonts.nunito(
+                fontSize: 12, color: GlobalColors.colorGreenEmerald),
+            focusColor: color,
+            filled: isfilled,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(color: color!),
             ),
-          )),
-    );
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(4.0),
+              borderSide: BorderSide(color: color!),
+            ),
+            labelText: hintText,
+            prefixIcon: isPrefixIcon == false
+                ? null
+                : Icon(prefixIconData, size: 30, color: color),
+            suffixIcon: isSuffixIcon == false
+                ? null
+                : GestureDetector(
+                    onTap: onsuffixIconTap,
+                    child: Icon(
+                      sufixtIconData,
+                      size: 25,
+                      color: color,
+                    ),
+                  )),
+        validator: (String? value) {
+          if (value == null) {
+            return 'Password is required';
+          }
+        });
   }
 }
