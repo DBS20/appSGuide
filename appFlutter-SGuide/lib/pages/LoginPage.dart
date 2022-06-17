@@ -139,8 +139,12 @@ class _LoginPageState extends State<LoginPage> {
                   if (_controllerUser.text.isEmpty) {
                     id = "70624";
                     int.parse(id!);
+                    name = "Diana Bojorquez Soto";
+                    email = "dbs70624@udelasalle.edu.mx";
                   } else {
                     int.parse(id!);
+                    name = "Marvin Flores";
+                    email = "mf@udelasalle.edu.mx";
                   }
 
                   //condición de que existe el usuario

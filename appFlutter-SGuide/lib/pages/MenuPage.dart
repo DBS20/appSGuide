@@ -112,6 +112,8 @@ class _MenuPageState extends State<MenuPage> {
                     ),
                   ),
 
+                  //FutureBuilder(builder: builder),
+
                   Center(
                       child: Accordion(
                         maxOpenSections: 2,
@@ -121,7 +123,7 @@ class _MenuPageState extends State<MenuPage> {
                             headerBackgroundColorOpened: GlobalColors.colorGrey,
                             isOpen: false,
                             header: Text(
-                              'Rectoría',
+                              'Rectoría',//snapshot.requiredata[index].nombrelugar
                               style: GoogleFonts.nunito(fontSize: 20, fontWeight: FontWeight.bold, color: GlobalColors.colorGreenEmerald,
                               ),
                             ),
@@ -131,7 +133,7 @@ class _MenuPageState extends State<MenuPage> {
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Text(
-                                      "En la entrada principal de la calle Universidad",
+                                      "En la entrada principal de la calle Universidad",//snapshot.requiredata[index].descripcion
                                       style: GoogleFonts.nunitoSans(fontSize: 20, fontWeight: FontWeight.bold)),
                                 ),
                               ),
@@ -151,6 +153,7 @@ class _MenuPageState extends State<MenuPage> {
                                           fontSize: 10.0,
 
                                           onPressed: () {
+                                            //googleMapLink = snapshot.requiredata[index].linkgoogleMapa360
 
                                             googleMapLink = "https://www.google.com/maps/@21.1537915,-101.7109448,3a,75y,340h,80t/data=!3m4!1e1!3m2!1sAF1QipP97A1IpldVO_S-lnOht0IK6ONkOgH8MVazR38y!2e10";
 

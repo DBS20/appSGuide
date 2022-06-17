@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: const EdgeInsets.all(10.0),
                             child: ListTile(
                               title: Text('Nombre completo:', style: GoogleFonts.nunito(fontSize: 18,color: GlobalColors.colorGreenTurquoise,fontWeight: FontWeight.bold)),
-                              subtitle: Text('Diana Bojorquez Soto',style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorGreenTurquoise)),
+                              subtitle: Text(name!,style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorGreenTurquoise)),
                               leading: Icon(Icons.alternate_email_sharp, size: 50, color: GlobalColors.colorGreenTurquoise),
                             ),
                           ),
@@ -71,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             padding: const EdgeInsets.all(10.0),
                             child: ListTile(
                               title: Text('Correo:', style: GoogleFonts.nunito(fontSize: 18,color: GlobalColors.colorGreenTurquoise,fontWeight: FontWeight.bold)),
-                              subtitle: Text('dbs70624@udelasalle.edu.mx', style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorGreenTurquoise)),
+                              subtitle: Text(email!, style: GoogleFonts.nunito(fontSize: 15,color: GlobalColors.colorGreenTurquoise)),
                               leading: Icon(Icons.mail, size: 50, color: GlobalColors.colorGreenTurquoise),
                             ),
                           ),
