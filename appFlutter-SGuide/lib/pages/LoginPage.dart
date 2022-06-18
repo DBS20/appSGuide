@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.all(15.0),
               child: NumberFieldWidget(
                   isPrefixIcon: true,
-                  prefixIconData: Icons.person,
+                  prefixIconData: Icons.apps_sharp,
                   isSuffixIcon: false,
                   isMyControllerActivate: true,
                   controller: _controllerUser,

@@ -74,7 +74,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: NumberFieldWidget(
                     isPrefixIcon: true,
                     //Cambiar a ícono de números
-                    prefixIconData: Icons.person,
+                    prefixIconData: Icons.apps_sharp,
                     isSuffixIcon: false,
                     isMyControllerActivate: true,
                     controller: _controllerEnrolled,
