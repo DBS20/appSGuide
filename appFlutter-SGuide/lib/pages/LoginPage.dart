@@ -11,9 +11,10 @@ import 'package:appsguide/widgets/ButtonWidgetGradient.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:appsguide/services/StudentServices.dart';
 
 String? name;
-String? id;
+int? id;
 String? email;
 String? pss;
 
@@ -25,6 +26,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  StudentsService studentServices = new StudentsService();
+  bool cargando = true;
   final TextEditingController _controllerUser = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -134,17 +137,12 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 onPressed: () {
-                  //captura de datos
-                  id = _controllerUser.text;
+                  id = int.parse(_controllerUser.text);
+                  //Captura de datos
                   if (_controllerUser.text.isEmpty) {
-                    id = "70624";
-                    int.parse(id!);
+                    id = 70624;
                     name = "Diana Bojorquez Soto";
                     email = "dbs70624@udelasalle.edu.mx";
-                  } else {
-                    int.parse(id!);
-                    name = "Marvin Flores";
-                    email = "mf@udelasalle.edu.mx";
                   }
 
                   //condición de que existe el usuario
@@ -156,8 +154,6 @@ class _LoginPageState extends State<LoginPage> {
                       PageTransition(
                           type: PageTransitionType.rightToLeft,
                           child: MenuPage()));
-                  //Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftJoined, child: MenuPage(), childCurrent: LoginPage()));
-                  //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => MenuPage()));
                 },
               ),
             ),

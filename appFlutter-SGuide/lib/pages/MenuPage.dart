@@ -1,3 +1,4 @@
+import 'package:accordion/controllers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class _MenuPageState extends State<MenuPage> {
               },
               icon: Icon(Icons.logout)),
         ],
-        title: Text('Bienvenido: ' + id!,
+        title: Text('Bienvenido: $id',
             style: GoogleFonts.comfortaa(
                 fontSize: 20,
                 color: Colors.white,
@@ -118,28 +119,30 @@ class _MenuPageState extends State<MenuPage> {
                     ],
                   ),
                 ),
-
-                //FutureBuilder(builder: builder),
                 SingleChildScrollView(
                   child: FutureBuilder(
                     future: placesServices.getPlaces(),
                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: Text('Loading...'),
+                          child: Text('Cargando...',
+                              style: GoogleFonts.nunito(
+                                  fontSize: 30,
+                                  color: GlobalColors.colorGreenTurquoise,
+                                  fontWeight: FontWeight.bold)),
                         );
                       }
-//METER UN SINGLESCROLLVIEW
                       return ListView.builder(
                         shrinkWrap: true,
                         itemCount: snapshot.requireData.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListView(
                             shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
                             children: [
                               Accordion(
+                                disableScrolling: false,
                                 paddingListBottom: 0,
+                                paddingListTop: 2,
                                 maxOpenSections: 2,
                                 children: [
                                   AccordionSection(
@@ -216,7 +219,7 @@ class _MenuPageState extends State<MenuPage> {
                       );
                     },
                   ),
-                )
+                ),
               ],
             ),
           ]),
