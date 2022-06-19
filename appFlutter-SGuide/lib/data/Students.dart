@@ -31,15 +31,17 @@ class Result {
   int? matricula;
   String? nombre;
   String? correo;
-  String? contrasena;
+  String? contraseA;
+  String? rol;
 
-  Result({this.matricula, this.nombre, this.correo, this.contrasena});
+  Result({this.matricula, this.nombre, this.correo, this.contraseA, this.rol});
 
   Result.fromJson(Map<String, dynamic> json) {
     matricula = json['matricula'];
     nombre = json['nombre'];
     correo = json['correo'];
-    contrasena = json['contraseña'];
+    contraseA = json['contraseña'];
+    rol = json['rol'];
   }
 
   Map<String, dynamic> toJson() {
@@ -47,7 +49,8 @@ class Result {
     data['matricula'] = this.matricula;
     data['nombre'] = this.nombre;
     data['correo'] = this.correo;
-    data['contraseña'] = this.contrasena;
+    data['contraseña'] = this.contraseA;
+    data['rol'] = this.rol;
     return data;
   }
 }
