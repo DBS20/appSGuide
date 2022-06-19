@@ -1,4 +1,5 @@
 import 'package:accordion/controllers.dart';
+import 'package:appsguide/my_icons_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,7 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   PlacesService placesServices = new PlacesService();
   bool cargando = true;
+  ScrollController _controller = new ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,105 +122,103 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ),
                 SingleChildScrollView(
-                  child: FutureBuilder(
-                    future: placesServices.getPlaces(),
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      if (!snapshot.hasData) {
+                  scrollDirection: Axis.vertical,
+                  child: Column(children: [
+                    FutureBuilder(
+                      future: placesServices.getPlaces(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: Text('Cargando...',
+                                style: GoogleFonts.nunito(
+                                    fontSize: 30,
+                                    color: GlobalColors.colorGreenTurquoise,
+                                    fontWeight: FontWeight.bold)),
+                          );
+                        }
                         return Center(
-                          child: Text('Cargando...',
-                              style: GoogleFonts.nunito(
-                                  fontSize: 30,
-                                  color: GlobalColors.colorGreenTurquoise,
-                                  fontWeight: FontWeight.bold)),
-                        );
-                      }
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: snapshot.requireData.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return ListView(
+                          child: ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            children: [
-                              Accordion(
-                                disableScrolling: false,
-                                paddingListBottom: 0,
-                                paddingListTop: 2,
-                                maxOpenSections: 2,
+                            itemCount: snapshot.requireData.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ListView(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
                                 children: [
-                                  AccordionSection(
-                                    headerBackgroundColor:
-                                        GlobalColors.colorLightGrey,
-                                    headerBackgroundColorOpened:
-                                        GlobalColors.colorGrey,
-                                    isOpen: false,
-                                    header: Text(
-                                      snapshot.requireData[index].nombre,
-                                      style: GoogleFonts.nunito(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: GlobalColors.colorGreenEmerald,
-                                      ),
-                                    ),
-                                    content: Column(children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(top: 20.0),
-                                        child: Align(
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                              snapshot.requireData[index]
-                                                  .descripcion,
-                                              style: GoogleFonts.nunitoSans(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 20.0, left: 10.0),
-                                            child: Align(
-                                                alignment: Alignment.centerLeft,
-                                                child: ButtonWidget(
-                                                  tittle: "360°",
-                                                  color:
-                                                      GlobalColors.colorWhite,
-                                                  height: 40.0,
-                                                  width: 80.0,
-                                                  hasColor: false,
-                                                  colorButton:
-                                                      GlobalColors.colorBlack,
-                                                  fontSize: 10.0,
-                                                  onPressed: () {
-                                                    //googleMapLink = snapshot.requiredata[index].linkgoogleMapa360
-
-                                                    googleMapLink = snapshot
-                                                        .requireData[index]
-                                                        .linkMapa;
-
-                                                    Navigator.of(context).pop();
-                                                    Navigator.push(
-                                                        context,
-                                                        PageTransition(
-                                                            type: PageTransitionType
-                                                                .rightToLeftWithFade,
-                                                            child:
-                                                                GoogleMapPage()));
-                                                  },
-                                                )),
+                                  Card(
+                                    color: GlobalColors.cakeBlue,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4)),
+                                    elevation: 10,
+                                    margin: EdgeInsets.all(8),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: ListTile(
+                                            //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+                                            title: Text(
+                                                snapshot
+                                                    .requireData[index].nombre,
+                                                style: GoogleFonts.nunito(
+                                                    fontSize: 18,
+                                                    color: GlobalColors
+                                                        .colorLightGrey,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            subtitle: Text(
+                                                snapshot.requireData[index]
+                                                    .descripcion,
+                                                style: GoogleFonts.nunitoSans(
+                                                    fontSize: 15,
+                                                    color: GlobalColors
+                                                        .colorLightGrey)),
+                                            leading: Icon(My_icons.building,
+                                                size: 50,
+                                                color: GlobalColors
+                                                    .colorLightGrey),
                                           ),
-                                        ],
-                                      )
-                                    ]),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: ButtonWidget(
+                                              tittle: "360°",
+                                              color: GlobalColors.colorWhite,
+                                              height: 30.0,
+                                              width: 80.0,
+                                              hasColor: true,
+                                              fontSize: 10.0,
+                                              onPressed: () {
+                                                googleMapLink = snapshot
+                                                    .requireData[index]
+                                                    .linkMapa;
+                                                Navigator.of(context).pop();
+                                                Navigator.push(
+                                                    context,
+                                                    PageTransition(
+                                                        type: PageTransitionType
+                                                            .rightToLeftWithFade,
+                                                        child:
+                                                            GoogleMapPage()));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
-                              )
-                            ],
-                          );
-                        },
-                      );
-                    },
-                  ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ]),
                 ),
               ],
             ),
