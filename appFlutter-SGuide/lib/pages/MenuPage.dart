@@ -152,7 +152,7 @@ class _MenuPageState extends State<MenuPage> {
                                 physics: const NeverScrollableScrollPhysics(),
                                 children: [
                                   Card(
-                                    color: GlobalColors.cakeBlue,
+                                    color: GlobalColors.colorGrey,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4)),
                                     elevation: 10,
@@ -162,14 +162,13 @@ class _MenuPageState extends State<MenuPage> {
                                         Padding(
                                           padding: const EdgeInsets.all(10.0),
                                           child: ListTile(
-                                            //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
                                             title: Text(
                                                 snapshot
                                                     .requireData[index].nombre,
                                                 style: GoogleFonts.nunito(
                                                     fontSize: 18,
                                                     color: GlobalColors
-                                                        .colorLightGrey,
+                                                        .colorGreenTurquoise,
                                                     fontWeight:
                                                         FontWeight.bold)),
                                             subtitle: Text(
@@ -178,11 +177,11 @@ class _MenuPageState extends State<MenuPage> {
                                                 style: GoogleFonts.nunitoSans(
                                                     fontSize: 15,
                                                     color: GlobalColors
-                                                        .colorLightGrey)),
+                                                        .colorGreenTurquoise)),
                                             leading: Icon(My_icons.building,
                                                 size: 50,
                                                 color: GlobalColors
-                                                    .colorLightGrey),
+                                                    .colorGreenTurquoise),
                                           ),
                                         ),
                                         Padding(
@@ -191,7 +190,8 @@ class _MenuPageState extends State<MenuPage> {
                                             alignment: Alignment.bottomRight,
                                             child: ButtonWidget(
                                               tittle: "360°",
-                                              color: GlobalColors.colorWhite,
+                                              color: GlobalColors
+                                                  .colorGreenEmerald,
                                               height: 30.0,
                                               width: 80.0,
                                               hasColor: true,
