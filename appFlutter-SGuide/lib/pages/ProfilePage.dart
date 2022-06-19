@@ -74,7 +74,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   color: GlobalColors
                                                       .colorGreenTurquoise,
                                                   fontWeight: FontWeight.bold)),
-                                          subtitle: Text(name ?? "Falló",
+                                          subtitle: Text(
+                                              snapshot
+                                                  .requireData[id! - 1].nombre,
                                               //snapshot.requireData.nombre,
                                               style: GoogleFonts.nunito(
                                                   fontSize: 15,
@@ -110,7 +112,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   color: GlobalColors
                                                       .colorGreenTurquoise,
                                                   fontWeight: FontWeight.bold)),
-                                          subtitle: Text(email ?? "Holi",
+                                          subtitle: Text(
+                                              snapshot
+                                                  .requireData[id! - 1].correo,
                                               style: GoogleFonts.nunito(
                                                   fontSize: 15,
                                                   color: GlobalColors

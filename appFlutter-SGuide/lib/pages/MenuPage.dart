@@ -14,6 +14,7 @@ import 'package:appsguide/pages/LoginPage.dart';
 import 'package:appsguide/pages/MapPage.dart';
 import 'package:appsguide/pages/GoogleMapPage.dart';
 import 'package:appsguide/services/PlacesServices.dart';
+import 'package:appsguide/services/StudentServices.dart';
 
 String? googleMapLink;
 
@@ -26,8 +27,8 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   PlacesService placesServices = new PlacesService();
+  StudentsService studentServices = new StudentsService();
   bool cargando = true;
-  ScrollController _controller = new ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
