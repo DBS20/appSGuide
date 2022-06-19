@@ -121,6 +121,10 @@ class _MenuPageState extends State<MenuPage> {
                     ],
                   ),
                 ),
+                Divider(
+                  thickness: 4.0,
+                  color: GlobalColors.colorGreenLight,
+                ),
                 SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(children: [
