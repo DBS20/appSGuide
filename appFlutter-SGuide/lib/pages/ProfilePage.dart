@@ -44,6 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           future: studentsService.getStudents(),
                           builder:
                               (BuildContext context, AsyncSnapshot snapshot) {
+                            //Crear FOR para iterar entre matrícula e Index
                             if (!snapshot.hasData) {
                               return const CircularProgressIndicator();
                             } else if (snapshot.hasData &&
@@ -74,9 +75,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   color: GlobalColors
                                                       .colorGreenTurquoise,
                                                   fontWeight: FontWeight.bold)),
-                                          subtitle: Text(
-                                              snapshot
-                                                  .requireData[id! - 1].nombre,
+                                          subtitle: Text(name!,
                                               //snapshot.requireData.nombre,
                                               style: GoogleFonts.nunito(
                                                   fontSize: 15,
@@ -112,9 +111,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   color: GlobalColors
                                                       .colorGreenTurquoise,
                                                   fontWeight: FontWeight.bold)),
-                                          subtitle: Text(
-                                              snapshot
-                                                  .requireData[id! - 1].correo,
+                                          subtitle: Text(email!,
                                               style: GoogleFonts.nunito(
                                                   fontSize: 15,
                                                   color: GlobalColors
