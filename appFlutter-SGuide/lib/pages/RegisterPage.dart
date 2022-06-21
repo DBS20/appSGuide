@@ -1,5 +1,6 @@
 import 'package:appsguide/my_icons_icons.dart';
 import 'package:appsguide/pages/LoginPage.dart';
+import 'package:appsguide/data/Students.dart';
 import 'package:appsguide/widgets/NumberFieldWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +11,7 @@ import 'package:appsguide/widgets/ButtonWidgetGradient.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
-String? name;
-String? id;
-String? email;
-String? pss;
+import 'package:appsguide/services/StudentServices.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key? key}) : super(key: key);
@@ -27,6 +25,9 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _controllerEnrolled = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
+  final TextEditingController _controllerPassword2 = TextEditingController();
+
+  StudentsService studentsService = new StudentsService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
       body: SingleChildScrollView(
         child: Container(
+          height: 900,
           color: GlobalColors.colorDarkGrey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     prefixIconData: My_icons.key,
                     isSuffixIcon: false,
                     isMyControllerActivate: true,
-                    controller: _controllerPassword,
+                    controller: _controllerPassword2,
                     hintText: 'Confirmar contraseña',
                     onChange: (String value) => {value}),
               ),
@@ -134,6 +136,124 @@ class _RegisterPageState extends State<RegisterPage> {
                     ],
                   ),
                   onPressed: () {
+                    Result alumno = new Result();
+                    alumno.matricula = int.parse(_controllerEnrolled.text);
+                    alumno.nombre = _controllerName.text;
+                    alumno.correo = _controllerEmail.text;
+                    alumno.contrasena = _controllerPassword.text;
+                    alumno.rol = "STD";
+                    studentsService.addStudent(alumno);
+                    //Captura de datos
+                    /* if (_controllerUser.text.isEmpty ||
+                                          _controllerPassword.text.isEmpty) {
+                                        showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: const Text(
+                                                  "Datos vacíos",
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                                content: SingleChildScrollView(
+                                                  child: ListBody(
+                                                      children: const <Widget>[
+                                                        Divider(
+                                                          thickness: 1.0,
+                                                          color: GlobalColors
+                                                              .colorGreenLight,
+                                                        ),
+                                                        Text(
+                                                            "Por favor, ingrese los datos solicitados")
+                                                      ]),
+                                                ),
+                                                backgroundColor:
+                                                    GlobalColors.colorGrey,
+                                                titleTextStyle: const TextStyle(
+                                                    color: GlobalColors
+                                                        .colorGreenTurquoise,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 25.0),
+                                                contentTextStyle: const TextStyle(
+                                                    color: GlobalColors
+                                                        .colorGreenTurquoise),
+                                              );
+                                            });
+                                      } else {
+                                        flag = false;
+                                        id = int.parse(_controllerUser.text);
+                                        pss = _controllerPassword.text;
+                                        for (var i = 0;
+                                            i <= snapshot.requireData.length;
+                                            i++) {
+                                          if (id ==
+                                                  snapshot.requireData[i]
+                                                      .matricula &&
+                                              pss ==
+                                                  snapshot.requireData[i]
+                                                      .contrasena) {
+                                            name =
+                                                snapshot.requireData[i].nombre;
+                                            email =
+                                                snapshot.requireData[i].correo;
+                                            pss = snapshot
+                                                .requireData[i].contrasena;
+                                            flag = true;
+                                            Navigator.of(context).pop();
+                                            Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                    type: PageTransitionType
+                                                        .rightToLeft,
+                                                    child: MenuPage()));
+                                            break;
+                                          }
+                                          if (flag == false &&
+                                              i ==
+                                                  snapshot.requireData.length -
+                                                      1) {
+                                            showDialog(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) {
+                                                  return AlertDialog(
+                                                    title: const Text(
+                                                      "Datos incorrectos",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                    ),
+                                                    content:
+                                                        SingleChildScrollView(
+                                                      child: ListBody(
+                                                          children: const <
+                                                              Widget>[
+                                                            Divider(
+                                                              thickness: 1.0,
+                                                              color: GlobalColors
+                                                                  .colorGreenLight,
+                                                            ),
+                                                            Text(
+                                                                "No existe la matrícula o la contraseña es incorrecta, por favor, verifique sus datos.")
+                                                          ]),
+                                                    ),
+                                                    backgroundColor:
+                                                        GlobalColors.colorGrey,
+                                                    titleTextStyle: const TextStyle(
+                                                        color: GlobalColors
+                                                            .colorGreenTurquoise,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 25.0),
+                                                    contentTextStyle:
+                                                        const TextStyle(
+                                                            color: GlobalColors
+                                                                .colorGreenTurquoise),
+                                                  );
+                                                });
+                                            break;
+                                          }
+                                        }
+                                      }*/
+
                     /*
                     //captura de datos
                     id = controller.text;

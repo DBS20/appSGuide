@@ -26,4 +26,20 @@ class StudentsService {
     print(result);
     return result;
   }
+
+  Future<http.Response> addStudent(Result alumno) async {
+    return http.post(
+      Uri.parse('https://schoolguideapi.azurewebsites.net/Persona'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, dynamic>{
+        'matricula': alumno.matricula!,
+        'nombre': alumno.nombre!,
+        'correo': alumno.correo!,
+        'contraseña': alumno.contrasena!,
+        'rol': alumno.rol!
+      }),
+    );
+  }
 }

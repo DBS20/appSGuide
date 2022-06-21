@@ -1,3 +1,4 @@
+import 'package:appsguide/data/Students.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +6,7 @@ import 'package:appsguide/pages/LoginPage.dart';
 import 'package:appsguide/pages/MenuPage.dart';
 import 'package:appsguide/services/StudentServices.dart';
 
+import 'package:appsguide/widgets/ButtonWidgetGradient.dart';
 import 'package:page_transition/page_transition.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -160,6 +162,27 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ],
                                   ),
                                 ),
+                                Divider(
+                                  thickness: 0.5,
+                                  color: GlobalColors.colorGreenLight,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: ButtonWidget(
+                                    tittle: 'Acceder',
+                                    width: 200.0,
+                                    height: 50.0,
+                                    hasColor: false,
+                                    gradient: LinearGradient(
+                                      colors: <Color>[
+                                        GlobalColors.colorBlue,
+                                        GlobalColors.colorGreenEmerald,
+                                        GlobalColors.colorGreenTurquoise
+                                      ],
+                                    ),
+                                    onPressed: () {},
+                                  ),
+                                )
                               ],
                             );
                           }),

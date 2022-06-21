@@ -1,4 +1,5 @@
 import 'package:appsguide/pages/MenuPage.dart';
+import 'package:appsguide/pages/RegisterPage.dart';
 import 'package:flutter/material.dart';
 import 'package:appsguide/utilerias/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,6 +79,29 @@ class _NavigationDrawer extends State<NavigationDrawer> {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => ProfilePage()));
+              },
+            ),
+          ),
+          Divider(
+            thickness: 0.5,
+            color: GlobalColors.colorGreenLight,
+          ),
+          Ink(
+            color: Color.fromARGB(64, 0, 0, 0),
+            child: ListTile(
+              leading: Icon(
+                Icons.question_answer,
+                color: GlobalColors.colorGreenEmerald,
+              ),
+              title: Text('Registro',
+                  style: GoogleFonts.nunito(
+                      fontSize: 15,
+                      color: GlobalColors.colorBlueCapri,
+                      fontWeight: FontWeight.bold)),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => RegisterPage()));
               },
             ),
           ),
