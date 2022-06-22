@@ -93,29 +93,6 @@ class _NavigationDrawer extends State<NavigationDrawer> {
                 Icons.question_answer,
                 color: GlobalColors.colorGreenEmerald,
               ),
-              title: Text('Registro',
-                  style: GoogleFonts.nunito(
-                      fontSize: 15,
-                      color: GlobalColors.colorBlueCapri,
-                      fontWeight: FontWeight.bold)),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => RegisterPage()));
-              },
-            ),
-          ),
-          Divider(
-            thickness: 0.5,
-            color: GlobalColors.colorGreenLight,
-          ),
-          Ink(
-            color: Color.fromARGB(64, 0, 0, 0),
-            child: ListTile(
-              leading: Icon(
-                Icons.question_answer,
-                color: GlobalColors.colorGreenEmerald,
-              ),
               title: Text('Ayuda',
                   style: GoogleFonts.nunito(
                       fontSize: 15,

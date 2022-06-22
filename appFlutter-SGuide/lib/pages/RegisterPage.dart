@@ -121,163 +121,235 @@ class _RegisterPageState extends State<RegisterPage> {
                     hintText: 'Confirmar contraseña',
                     onChange: (String value) => {value}),
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: ButtonWidget(
-                  tittle: 'Guardar',
-                  width: 200.0,
-                  height: 50.0,
-                  hasColor: false,
-                  gradient: LinearGradient(
-                    colors: <Color>[
-                      GlobalColors.colorBlue,
-                      GlobalColors.colorGreenEmerald,
-                      GlobalColors.colorGreenTurquoise
-                    ],
-                  ),
-                  onPressed: () {
-                    Result alumno = new Result();
-                    alumno.matricula = int.parse(_controllerEnrolled.text);
-                    alumno.nombre = _controllerName.text;
-                    alumno.correo = _controllerEmail.text;
-                    alumno.contrasena = _controllerPassword.text;
-                    alumno.rol = "STD";
-                    studentsService.addStudent(alumno);
-                    //Captura de datos
-                    /* if (_controllerUser.text.isEmpty ||
-                                          _controllerPassword.text.isEmpty) {
-                                        showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                title: const Text(
-                                                  "Datos vacíos",
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                content: SingleChildScrollView(
-                                                  child: ListBody(
-                                                      children: const <Widget>[
-                                                        Divider(
-                                                          thickness: 1.0,
-                                                          color: GlobalColors
-                                                              .colorGreenLight,
-                                                        ),
-                                                        Text(
-                                                            "Por favor, ingrese los datos solicitados")
-                                                      ]),
-                                                ),
-                                                backgroundColor:
-                                                    GlobalColors.colorGrey,
-                                                titleTextStyle: const TextStyle(
+              FutureBuilder(
+                  future: studentsService.getStudents(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    //Crear FOR para iterar entre matrícula e Index
+                    if (!snapshot.hasData) {
+                      return const CircularProgressIndicator();
+                    } else if (snapshot.hasData && snapshot.data.isEmpty) {
+                      return Center(
+                        child: Text('Cargando...',
+                            style: GoogleFonts.nunito(
+                                fontSize: 30,
+                                color: GlobalColors.colorGreenTurquoise,
+                                fontWeight: FontWeight.bold)),
+                      );
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: ButtonWidget(
+                        tittle: 'Guardar',
+                        width: 200.0,
+                        height: 50.0,
+                        hasColor: false,
+                        gradient: LinearGradient(
+                          colors: <Color>[
+                            GlobalColors.colorBlue,
+                            GlobalColors.colorGreenEmerald,
+                            GlobalColors.colorGreenTurquoise
+                          ],
+                        ),
+                        onPressed: () {
+                          //Captura de datos
+                          if (_controllerName.text.isEmpty ||
+                              _controllerEmail.text.isEmpty ||
+                              _controllerEnrolled.text.isEmpty ||
+                              _controllerPassword.text.isEmpty ||
+                              _controllerPassword2.text.isEmpty) {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      "Datos vacíos",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    content: SingleChildScrollView(
+                                      child: ListBody(children: const <Widget>[
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: GlobalColors.colorGreenLight,
+                                        ),
+                                        Text(
+                                            "Por favor, ingrese los datos solicitados")
+                                      ]),
+                                    ),
+                                    backgroundColor: GlobalColors.colorGrey,
+                                    titleTextStyle: const TextStyle(
+                                        color: GlobalColors.colorGreenTurquoise,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25.0),
+                                    contentTextStyle: const TextStyle(
+                                        color:
+                                            GlobalColors.colorGreenTurquoise),
+                                  );
+                                });
+                          } else if (_controllerPassword.text !=
+                              _controllerPassword2.text) {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      "Contraseñas incorrectas",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    content: SingleChildScrollView(
+                                      child: ListBody(children: const <Widget>[
+                                        Divider(
+                                          thickness: 1.0,
+                                          color: GlobalColors.colorGreenLight,
+                                        ),
+                                        Text(
+                                            "Lo sentimos. Las contraseñas no coinciden")
+                                      ]),
+                                    ),
+                                    backgroundColor: GlobalColors.colorGrey,
+                                    titleTextStyle: const TextStyle(
+                                        color: GlobalColors.colorGreenTurquoise,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 25.0),
+                                    contentTextStyle: const TextStyle(
+                                        color:
+                                            GlobalColors.colorGreenTurquoise),
+                                  );
+                                });
+                          } else {
+                            id = int.parse(_controllerEnrolled.text);
+                            email = _controllerEmail.text;
+                            for (var i = 0;
+                                i <= snapshot.requireData.length;
+                                i++) {
+                              if (id == snapshot.requireData[i].matricula) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text(
+                                          "Matrícula incorrecta",
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        content: SingleChildScrollView(
+                                          child:
+                                              ListBody(children: const <Widget>[
+                                            Divider(
+                                              thickness: 1.0,
+                                              color:
+                                                  GlobalColors.colorGreenLight,
+                                            ),
+                                            Text(
+                                                "Lo sentimos. Esta matrícula ya está registrada.")
+                                          ]),
+                                        ),
+                                        backgroundColor: GlobalColors.colorGrey,
+                                        titleTextStyle: const TextStyle(
+                                            color: GlobalColors
+                                                .colorGreenTurquoise,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25.0),
+                                        contentTextStyle: const TextStyle(
+                                            color: GlobalColors
+                                                .colorGreenTurquoise),
+                                      );
+                                    });
+                                break;
+                              } else if (email ==
+                                  snapshot.requireData[i].correo) {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text(
+                                          "Correo incorrecto",
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        content: SingleChildScrollView(
+                                          child:
+                                              ListBody(children: const <Widget>[
+                                            Divider(
+                                              thickness: 1.0,
+                                              color:
+                                                  GlobalColors.colorGreenLight,
+                                            ),
+                                            Text(
+                                                "Lo sentimos. Este correo ya está registrado.")
+                                          ]),
+                                        ),
+                                        backgroundColor: GlobalColors.colorGrey,
+                                        titleTextStyle: const TextStyle(
+                                            color: GlobalColors
+                                                .colorGreenTurquoise,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25.0),
+                                        contentTextStyle: const TextStyle(
+                                            color: GlobalColors
+                                                .colorGreenTurquoise),
+                                      );
+                                    });
+                                break;
+                              } else {
+                                if (i == snapshot.requireData.length - 1) {
+                                  Result alumno = new Result();
+                                  alumno.matricula =
+                                      int.parse(_controllerEnrolled.text);
+                                  alumno.nombre = _controllerName.text;
+                                  alumno.correo = _controllerEmail.text;
+                                  alumno.contrasena = _controllerPassword.text;
+                                  alumno.rol = "STD";
+                                  studentsService.addStudent(alumno);
+                                  id = alumno.matricula;
+                                  name = alumno.nombre;
+                                  email = alumno.correo;
+                                  pss = alumno.contrasena;
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: const Text(
+                                            "Usuario creado",
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          content: SingleChildScrollView(
+                                            child: ListBody(
+                                                children: const <Widget>[
+                                                  Divider(
+                                                    thickness: 1.0,
                                                     color: GlobalColors
-                                                        .colorGreenTurquoise,
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 25.0),
-                                                contentTextStyle: const TextStyle(
-                                                    color: GlobalColors
-                                                        .colorGreenTurquoise),
-                                              );
-                                            });
-                                      } else {
-                                        flag = false;
-                                        id = int.parse(_controllerUser.text);
-                                        pss = _controllerPassword.text;
-                                        for (var i = 0;
-                                            i <= snapshot.requireData.length;
-                                            i++) {
-                                          if (id ==
-                                                  snapshot.requireData[i]
-                                                      .matricula &&
-                                              pss ==
-                                                  snapshot.requireData[i]
-                                                      .contrasena) {
-                                            name =
-                                                snapshot.requireData[i].nombre;
-                                            email =
-                                                snapshot.requireData[i].correo;
-                                            pss = snapshot
-                                                .requireData[i].contrasena;
-                                            flag = true;
-                                            Navigator.of(context).pop();
-                                            Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                    type: PageTransitionType
-                                                        .rightToLeft,
-                                                    child: MenuPage()));
-                                            break;
-                                          }
-                                          if (flag == false &&
-                                              i ==
-                                                  snapshot.requireData.length -
-                                                      1) {
-                                            showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                    title: const Text(
-                                                      "Datos incorrectos",
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                    ),
-                                                    content:
-                                                        SingleChildScrollView(
-                                                      child: ListBody(
-                                                          children: const <
-                                                              Widget>[
-                                                            Divider(
-                                                              thickness: 1.0,
-                                                              color: GlobalColors
-                                                                  .colorGreenLight,
-                                                            ),
-                                                            Text(
-                                                                "No existe la matrícula o la contraseña es incorrecta, por favor, verifique sus datos.")
-                                                          ]),
-                                                    ),
-                                                    backgroundColor:
-                                                        GlobalColors.colorGrey,
-                                                    titleTextStyle: const TextStyle(
-                                                        color: GlobalColors
-                                                            .colorGreenTurquoise,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 25.0),
-                                                    contentTextStyle:
-                                                        const TextStyle(
-                                                            color: GlobalColors
-                                                                .colorGreenTurquoise),
-                                                  );
-                                                });
-                                            break;
-                                          }
-                                        }
-                                      }*/
+                                                        .colorGreenLight,
+                                                  ),
+                                                  Text(
+                                                      "Registro completo. ¡Muchas gracias!")
+                                                ]),
+                                          ),
+                                          backgroundColor:
+                                              GlobalColors.colorGrey,
+                                          titleTextStyle: const TextStyle(
+                                              color: GlobalColors
+                                                  .colorGreenTurquoise,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25.0),
+                                          contentTextStyle: const TextStyle(
+                                              color: GlobalColors
+                                                  .colorGreenTurquoise),
+                                        );
+                                      });
 
-                    /*
-                    //captura de datos
-                    id = controller.text;
-                    if (_controllerUser.text.isEmpty) {
-                      id = "70624";
-                      int.parse(id!);
-                    } else {
-                      int.parse(id!);
-                    }*/
-
-                    //condición de que existe el usuario
-
-                    //cambiamos vista
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: MenuPage()));
-                    //Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftJoined, child: MenuPage(), childCurrent: LoginPage()));
-                    //Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => MenuPage()));
-                  },
-                ),
-              ),
+                                  Navigator.of(context).pop();
+                                  Navigator.push(
+                                      context,
+                                      PageTransition(
+                                          type: PageTransitionType.rightToLeft,
+                                          child: MenuPage()));
+                                  break;
+                                }
+                              }
+                            }
+                          }
+                        },
+                      ),
+                    );
+                  }),
             ],
           ),
         ),

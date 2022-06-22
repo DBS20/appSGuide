@@ -44,7 +44,7 @@ class _MenuPageState extends State<MenuPage> {
               },
               icon: Icon(Icons.logout)),
         ],
-        title: Text('Bienvenido: $id',
+        title: Text('Bienvenido $name',
             style: GoogleFonts.comfortaa(
                 fontSize: 20,
                 color: Colors.white,
