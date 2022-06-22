@@ -81,7 +81,6 @@ class _MenuPageState extends State<MenuPage> {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: ListTile(
-                          //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
                           title: Text('Rutas:',
                               style: GoogleFonts.nunito(
                                   fontSize: 18,
